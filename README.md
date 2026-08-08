@@ -1,6 +1,6 @@
-# CRMLS California Residential — MLS Analytics Pipeline
+# California Residential — MLS Analytics Pipeline
 
-A reproducible data-analysis pipeline over **CRMLS California residential** MLS
+A reproducible data-analysis pipeline over **California residential** MLS
 data (Sold & Listing extracts, ~28 months, Jan 2024 – Apr 2026). It ingests
 monthly data from the CoreLogic **Trestle** API, cleans and feature-engineers it
 through an ordered set of stages, flags outliers with IQR, and prepares lean
@@ -39,7 +39,7 @@ python run_pipeline.py --list     # list stages
 ## Data ingestion
 
 - **Trestle (CoreLogic)** — monthly Sold & Listing property extracts via the
-  OData REST API (`crmls_sold.py` / `crmls_listed.py`, gitignored).
+  OData REST API (`mls_sold.py` / `mls_listed.py`, gitignored).
 - **FRED (St. Louis Fed)** — 30-year fixed mortgage rate, merged onto each
   month for the rate/price analysis (`connectors/fred_connector.py`).
 
