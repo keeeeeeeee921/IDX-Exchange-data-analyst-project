@@ -1,12 +1,12 @@
 """
-Week 1 – Sold Transactions: Monthly Dataset Aggregation
-=========================================================
+Stage 01 – Sold Transactions: Ingest & Filter
+==============================================
 Loads and concatenates all monthly CRMLS Sold CSV files (Jan 2024 – Mar 2026)
 into a single combined dataset, filters to PropertyType == 'Residential',
 and saves the result for downstream analysis.
 
-Input:  CRMLSSold202401.csv – CRMLSSold202603.csv (27 files)
-Output: data/processed/week1_sold.csv
+Input: CRMLSSold202401.csv – CRMLSSold202603.csv (27 files)
+Output: data/processed/01_sold.csv
 """
 
 import pandas as pd
@@ -24,7 +24,7 @@ os.makedirs(OUTPUT_DIR, exist_ok=True)
 # Step 1: Load and concatenate all monthly Sold files
 # =============================================================================
 print("=" * 70)
-print("WEEK 1 – SOLD: MONTHLY DATASET AGGREGATION")
+print("STAGE 01 – SOLD: INGEST & FILTER")
 print("=" * 70)
 
 files = sorted(glob.glob(os.path.join(RAW_DIR, "CRMLSSold*.csv")))
@@ -72,10 +72,10 @@ for pt, count in pt_after.items():
 # =============================================================================
 # Step 5: Save combined dataset
 # =============================================================================
-output_path = os.path.join(OUTPUT_DIR, "week1_sold.csv")
+output_path = os.path.join(OUTPUT_DIR, "01_sold.csv")
 sold.to_csv(output_path, index=False)
 
 print(f"\n--- Output ---")
 print(f"  Saved to: {output_path}")
 print(f"  Final shape: {sold.shape[0]:,} rows x {sold.shape[1]} columns")
-print(f"\nWeek 1 Sold – Complete!")
+print(f"\nStage 01 (Ingest & Filter) Sold – Complete!")
